@@ -1,58 +1,112 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Portofolio Nurhadi — IDS Store Technology
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/img/logo.png" alt="Logo Nurhadi & IDS Store Technology" width="130">
 </p>
 
-## About Laravel
+<p align="center">
+  <strong>Pengembang IoT, Hardware Designer, Fullstack Web (Laravel) & Mobile (Flutter)</strong><br>
+  <em>Owner & Hardware Engineer di IDS Store Technology</em>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel"></a>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"></a>
+  <a href="https://espressif.com"><img src="https://img.shields.io/badge/ESP32%20%2F%20ESP8266-E7352C?style=for-the-badge&logo=espressif&logoColor=white" alt="ESP32"></a>
+  <a href="https://kicad.org"><img src="https://img.shields.io/badge/PCB%20Design-314CB6?style=for-the-badge&logo=kicad&logoColor=white" alt="PCB Design"></a>
+  <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS"></a>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📌 Tentang Portofolio
 
-## Learning Laravel
+Website portofolio ini dibangun menggunakan **Laravel** dan **Tailwind CSS** dengan arsitektur modular Blade, menyajikan profil profesional, etalase keahlian rekayasa hardware, implementasi IoT, aplikasi software, dan katalog produk resmi **IDS Store Technology**.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Keahlian & Spesialisasi Teknis
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+| Bidang | Teknologi / Alat | Lingkup Pekerjaan |
+| :--- | :--- | :--- |
+| **IoT & Embedded Systems** | ESP32, ESP8266, Arduino, STM32 | Riset, prototyping, integrasi sensor & aktuator, komunikasi MQTT / HTTP REST |
+| **Desain Skematik & PCB** | KiCAD, EasyEDA, Altium Designer | Skematik sirkuit, routing multi-layer, kalkulasi jejak daya, file Gerber & BOM |
+| **Web Development** | Laravel, PHP, Blade, Tailwind CSS, MySQL | Dashboard monitoring IoT, RESTful API, sistem autentikasi, manajemen data |
+| **Mobile & Desktop App** | Flutter, Dart | Aplikasi kontrol perangkat via Bluetooth Low Energy (BLE), Wi-Fi, dan Serial |
+| **Hardware Assembly** | Soldering SMD/THT, Power Bench Supply | Perakitan hardware, kalibrasi voltase/arus, pengujian ketahanan (stress test) |
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 💡 Unggulan Projek & Portofolio
+
+### 1. Smart Digital PSU V1.0.2
+- **Deskripsi**: Catu daya digital presisi terintegrasi dengan proteksi OVP/OCP, kalibrasi otomatis, serta dashboard kontrol via konektivitas wireless dan desktop/mobile.
+- **Teknologi**: Mikrokontroler ESP32, Modul ADC/DAC presisi, PCB Kustom, Flutter App, Web Dashboard Laravel.
+
+### 2. IoT Telemetry & Industrial Monitoring
+- **Deskripsi**: Sistem akuisisi data sensor berbasis cloud dengan visualisasi grafik real-time, logging data historis, dan alarm notifikasi.
+- **Teknologi**: ESP32, MQTT Broker, Laravel Backend, Tailwind CSS, MySQL.
+
+### 3. IDS Store Technology Hardware Catalog
+- **Deskripsi**: Etalase produk hardware siap pakai, kit mikrokontroler, modul converter daya, serta jasa custom rancang PCB dan prototype IoT.
+
+---
+
+## 📂 Struktur Modul Portofolio
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+resources/views/
+├── layout/
+│   └── topbar.blade.php        # Navigasi sticky responsive & racing-themed toggle menu
+├── sections/
+│   ├── hero.blade.php          # Banner profil, avatar IDS Store, dan CTA
+│   ├── skills.blade.php        # Slider horizontal kartu keahlian teknis
+│   ├── projects.blade.php      # Showcase projek dengan slider snap & galeri
+│   ├── store.blade.php         # Katalog produk IDS Store & filter kategori
+│   ├── modal-lightbox.blade.php# Lightbox zoom gambar projek & sertifikat
+│   └── scripts.blade.php       # Kontroler JS untuk interaksi, slider, & modal
+└── welcome.blade.php           # Entry view utama
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## ⚡ Instalasi & Menjalankan Lokal
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Pastikan telah menginstal **PHP >= 8.2**, **Composer**, dan **Node.js**:
 
-## Code of Conduct
+1. **Clone repositori**:
+   ```bash
+   git clone https://github.com/nh-hadi/porto_nurhadi.git
+   cd porto_nurhadi
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Install dependensi PHP**:
+   ```bash
+   composer install
+   ```
 
-## Security Vulnerabilities
+3. **Salin file environment & generate app key**:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. **Jalankan server lokal**:
+   ```bash
+   php artisan serve
+   ```
+   Akses di browser: `http://localhost:8000` (atau via virtual host Laragon).
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📬 Kontak & Kolaborasi
+
+- **Nama**: Nurhadi
+- **Brand / Store**: IDS Store Technology
+- **GitHub**: [@nh-hadi](https://github.com/nh-hadi)
+- **Repositori**: [porto_nurhadi](https://github.com/nh-hadi/porto_nurhadi.git)
+
+---
+<p align="center">
+  Dibuat dengan ❤️ oleh <strong>Nurhadi</strong> • © 2026 IDS Store Technology
+</p>
