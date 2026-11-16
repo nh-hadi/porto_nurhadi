@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio resmi Nurhadi - Web Developer & Founder IDS Store Technology. Portofolio proyek teknologi, pengembangan sistem, dan keahlian rekayasa perangkat lunak.">
+    <meta name="author" content="Nurhadi">
+    <meta property="og:title" content="Portfolio - Nurhadi | IDS Store Technology">
+    <meta property="og:description" content="Portfolio resmi Nurhadi - Web Developer & Founder IDS Store Technology.">
+    <meta property="og:url" content="https://nurhadi.cloud">
+    <meta property="og:type" content="website">
     <title>Portfolio - Nurhadi | IDS Store Technology</title>
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     
@@ -45,6 +51,13 @@
 
         <!-- 6. Fullscreen Image Modal / Lightbox -->
         @include('sections.modal-lightbox')
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-slate-200 text-center text-xs text-slate-500">
+            <p>&copy; {{ date('Y') }} <strong class="text-slate-800">{{ $pengaturan->nama_toko ?? 'IDS Store Technology' }}</strong> • {{ $pengaturan->nama_lengkap ?? 'Nurhadi' }}. Seluruh hak cipta dilindungi.
+                <a href="{{ route('login') }}" class="opacity-0 hover:opacity-40 text-slate-400 text-[10px] transition-opacity cursor-pointer inline-block px-1" title="Panel">&#8226;</a>
+            </p>
+        </footer>
 
     </main>
 

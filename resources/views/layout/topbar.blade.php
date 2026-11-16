@@ -1,30 +1,73 @@
+@php
+    $temaAktif = ($pengaturan ?? \App\Models\PengaturanSitus::ambilData())->temaTokens();
+    $topbarBorderGradient = $temaAktif['border'];
+    $brandTextGradient = $temaAktif['text_gradient'];
+    $topbarBtnGradient = $temaAktif['btn'] . ' ' . $temaAktif['btn_shadow'];
+@endphp
 <!-- ========================================== -->
 <!-- TOPBAR RACING WARNA-WARNI (Full Width & Sleek) -->
 <!-- ========================================== -->
 <header id="topbar-racing" class="w-full sticky top-0 z-50 px-2 sm:px-4 lg:px-6 py-1.5">
     <!-- Animated Racing Multi-color Gradient Border Box -->
-    <div class="relative w-full rounded-lg p-[2px] bg-gradient-to-r from-amber-400 via-rose-500 via-purple-500 via-cyan-400 to-amber-400 bg-[length:300%_100%] animate-gradient shadow-md shadow-rose-500/10">
+    <div class="relative w-full rounded-lg p-[2px] bg-gradient-to-r {{ $topbarBorderGradient }} bg-[length:300%_100%] animate-gradient shadow-md shadow-rose-500/10">
         <!-- Inner Light Card Container -->
         <div class="bg-gradient-to-r from-white via-slate-50 to-amber-50/30 rounded-[6px] px-4 sm:px-6 h-12 flex items-center justify-between border border-white/80">
             
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2.5 group">
-                <div class="relative w-8 h-8 rounded-md bg-gradient-to-br from-amber-400 via-rose-500 to-cyan-500 p-[1.5px] shadow-sm shadow-rose-500/20 group-hover:scale-105 group-hover:rotate-3 transition-all overflow-hidden flex-shrink-0">
+                <div class="relative w-8 h-8 rounded-md bg-gradient-to-br {{ $topbarBorderGradient }} p-[1.5px] shadow-sm shadow-rose-500/20 group-hover:scale-105 group-hover:rotate-3 transition-all overflow-hidden flex-shrink-0">
                     <img src="{{ asset('img/logo.png') }}" alt="Logo Nurhadi" class="w-full h-full object-contain rounded-[4.5px] bg-white p-0.5">
                 </div>
                 <div class="flex flex-col">
                     <div class="flex items-center gap-1.5">
-                        <span class="font-racing font-extrabold text-slate-900 tracking-wider text-sm uppercase bg-gradient-to-r from-rose-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-                            NUR<span class="text-amber-500">HADI</span>
+                        <span class="font-racing font-extrabold text-slate-900 tracking-wider text-sm uppercase inline-flex">
+                            @foreach($pengaturan->namaPerHuruf('topbar') as $itemHuruf)
+                                @if($itemHuruf['char'] === '&nbsp;')
+                                    <span class="inline-block w-1.5"></span>
+                                @else
+                                    <span class="inline-block transition-transform duration-150 group-hover:scale-105 {{ $itemHuruf['color'] }}">
+                                        {{ $itemHuruf['char'] }}
+                                    </span>
+                                @endif
+                            @endforeach
                         </span>
                     </div>
-                    <span class="text-[9px] text-slate-500 font-bold tracking-widest uppercase leading-none">IoT, Hardware, Laravel & Flutter</span>
+                    <span class="text-[9px] text-slate-500 font-bold tracking-widest uppercase leading-none">{{ $pengaturan->tagline ?? 'IoT, Hardware, Laravel & Flutter' }}</span>
                 </div>
             </a>
 
+            <!-- Racing Telemetry Digital Clock & Date Widget (Center / Desk) -->
+            <div class="hidden xl:flex items-center gap-2 bg-slate-950 text-white rounded-md border border-slate-800 px-2.5 py-1 shadow-xs">
+                <!-- Slanted Racing Decal Stripes -->
+                <div class="flex items-center gap-[2px] transform -skew-x-[22deg]">
+                    <span class="w-[2.5px] h-3.5 bg-amber-400 rounded-[0.5px]"></span>
+                    <span class="w-[2.5px] h-3.5 bg-rose-500 rounded-[0.5px]"></span>
+                    <span class="w-[2.5px] h-3.5 bg-cyan-400 rounded-[0.5px]"></span>
+                </div>
+                <!-- Hari & Tanggal -->
+                <div class="flex items-center gap-1.5 border-r border-slate-800 pr-2 pl-0.5">
+                    <i class="fa-regular fa-calendar-days text-[9px] text-cyan-400"></i>
+                    <span class="racing-clock-day text-[8px] font-racing font-extrabold text-amber-400 uppercase tracking-widest leading-none">
+                        {{ strtoupper(\Carbon\Carbon::now()->locale('id')->isoFormat('dddd')) }}
+                    </span>
+                    <span class="racing-clock-date text-[9px] font-mono font-bold text-slate-200 tracking-wider">
+                        {{ strtoupper(\Carbon\Carbon::now()->locale('id')->isoFormat('D MMM Y')) }}
+                    </span>
+                </div>
+                <!-- Jam & Detik -->
+                <div class="flex items-center gap-1">
+                    <div class="flex items-baseline gap-0.5 font-racing font-black text-white text-xs tracking-wider">
+                        <span class="racing-clock-hours-min text-white">{{ date('H:i') }}</span>
+                        <span class="text-amber-400 animate-pulse font-mono">:</span>
+                        <span class="racing-clock-seconds font-mono text-[9.5px] text-cyan-400 bg-slate-900 border border-slate-800 px-1 py-0.2 rounded font-bold">{{ date('s') }}</span>
+                    </div>
+                    <span class="px-1 py-0.2 rounded bg-gradient-to-r {{ $temaAktif['gradient'] }} text-white text-[7px] font-racing font-extrabold tracking-widest shadow-2xs">WIB</span>
+                </div>
+            </div>
+
             <!-- Desktop Navigation Menu (Tampil Semua di Mode Desktop) -->
             <nav class="hidden lg:flex items-center gap-1.5">
-                <a href="#home" class="px-3 py-1.5 rounded-md font-bold text-xs uppercase tracking-wider bg-rose-500 text-white shadow-sm shadow-rose-200 hover:scale-105 transition-all flex items-center gap-1.5">
+                <a href="#home" class="px-3 py-1.5 rounded-md font-bold text-xs uppercase tracking-wider bg-gradient-to-r {{ $topbarBtnGradient }} text-white shadow-sm hover:scale-105 transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-house text-[10px]"></i>
                     <span>Beranda</span>
                 </a>
@@ -40,23 +83,26 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
                     <span>Laravel & Flutter</span>
                 </a>
-                <a href="#projects" class="px-2.5 py-1.5 rounded-md font-semibold text-xs tracking-wider text-slate-700 hover:bg-emerald-100/70 hover:text-emerald-700 transition-all flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    <span>Projek Lain</span>
-                </a>
                 <a href="#store" class="px-2.5 py-1.5 rounded-md font-semibold text-xs tracking-wider text-slate-700 hover:bg-rose-100/70 hover:text-rose-700 transition-all flex items-center gap-1.5">
                     <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
                     <span>Toko IDS</span>
                 </a>
-                <a href="#contact" class="ml-1 px-3 py-1.5 rounded-md bg-gradient-to-r from-rose-500 to-amber-500 text-white font-racing font-bold text-[10px] tracking-wider shadow-sm hover:shadow-md hover:shadow-rose-200 hover:scale-105 transition-all flex items-center gap-1.5">
+                <a href="#contact" class="ml-1 px-3 py-1.5 rounded-md bg-gradient-to-r {{ $topbarBtnGradient }} text-white font-racing font-bold text-[10px] tracking-wider shadow-sm hover:scale-105 transition-all flex items-center gap-1.5">
                     <span>HUBUNGI</span>
                     <i class="fa-solid fa-arrow-right text-[8px]"></i>
                 </a>
             </nav>
 
             <!-- Racing Menu Toggle Button (Parallelogram / Jajar Genjang Lines + MENU Label) -->
-            <div class="flex lg:hidden items-center">
-                <button type="button" onclick="toggleRacingMenu()" id="btn-racing-menu" class="relative group overflow-hidden rounded-md bg-gradient-to-r from-rose-500 via-purple-600 to-cyan-500 p-[1.5px] shadow-md shadow-rose-500/25 hover:shadow-cyan-500/40 transition-all hover:scale-105 active:scale-95 focus:outline-none" aria-label="Toggle Menu">
+            <div class="flex lg:hidden items-center gap-1.5">
+                <!-- Mobile Racing Clock -->
+                <div class="flex items-center gap-1 bg-slate-950 text-white rounded-md border border-slate-800 px-2 py-1 shadow-2xs font-racing text-[10px]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="racing-clock-hours-min text-white font-bold">{{ date('H:i') }}</span>
+                    <span class="text-amber-400 text-[8px] font-mono font-bold">WIB</span>
+                </div>
+
+                <button type="button" onclick="toggleRacingMenu()" id="btn-racing-menu" class="relative group overflow-hidden rounded-md bg-gradient-to-r {{ $topbarBorderGradient }} p-[1.5px] shadow-md shadow-rose-500/25 hover:shadow-cyan-500/40 transition-all hover:scale-105 active:scale-95 focus:outline-none" aria-label="Toggle Menu">
                     <div class="bg-slate-900 group-hover:bg-slate-800 transition-colors rounded-[4.5px] px-3 py-1.5 flex items-center gap-2">
                         <!-- Garis Jajar Genjang Racing (Slanted Parallelogram Stripes) -->
                         <div class="flex flex-col justify-center items-end gap-[3px]">
@@ -74,7 +120,7 @@
         <!-- Dropdown Menu (Premium Sleek Light Theme with Refined Radius) -->
         <div id="racing-dropdown-menu" class="hidden absolute top-full right-0 mt-2 z-50 w-72 sm:w-80 transition-all">
             <!-- Subtle Gradient Border Frame with Slim Radius -->
-            <div class="p-[1.5px] rounded-lg bg-gradient-to-br from-amber-400 via-rose-500 to-cyan-400 shadow-2xl shadow-slate-400/20">
+            <div class="p-[1.5px] rounded-lg bg-gradient-to-br {{ $topbarBorderGradient }} shadow-2xl shadow-slate-400/20">
                 <div class="bg-white/95 backdrop-blur-2xl rounded-[6px] p-3 text-slate-800 border border-white/90">
                     
                     <!-- Clean Light Header -->
@@ -86,9 +132,15 @@
                             <span class="font-racing font-bold text-[11px] tracking-wider text-slate-800 uppercase">Navigasi Portfolio</span>
                         </div>
                         <div class="flex items-center gap-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-[8.5px] font-racing font-bold px-1.5 py-0.5 rounded-[4px] bg-slate-100 text-slate-600 border border-slate-200">
-                                NURHADI
+                            <span class="w-1.5 h-1.5 rounded-full {{ $temaAktif['ping'] }} animate-pulse"></span>
+                            <span class="text-[8.5px] font-racing font-bold px-1.5 py-0.5 rounded-[4px] bg-slate-100 border border-slate-200 uppercase inline-flex">
+                                @foreach($pengaturan->namaPerHuruf('dropdown') as $itemHuruf)
+                                    @if($itemHuruf['char'] === '&nbsp;')
+                                        <span class="inline-block w-1"></span>
+                                    @else
+                                        <span class="{{ $itemHuruf['color'] }}">{{ $itemHuruf['char'] }}</span>
+                                    @endif
+                                @endforeach
                             </span>
                         </div>
                     </div>
@@ -196,7 +248,7 @@
 
                     <!-- Clean Footer CTA with Refined Radius -->
                     <div class="mt-2 pt-2 border-t border-slate-100">
-                        <a href="#contact" class="flex items-center justify-center gap-2 w-full py-2 rounded-[5px] bg-gradient-to-r from-rose-500 via-purple-600 to-amber-500 text-white font-racing font-bold text-[10px] tracking-wider shadow-sm hover:shadow-md hover:shadow-rose-300 hover:opacity-95 transition-all hover:scale-[1.01] active:scale-95">
+                        <a href="#contact" class="flex items-center justify-center gap-2 w-full py-2 rounded-[5px] bg-gradient-to-r {{ $topbarBtnGradient }} text-white font-racing font-bold text-[10px] tracking-wider shadow-sm hover:opacity-95 transition-all hover:scale-[1.01] active:scale-95">
                             <span>HUBUNGI SAYA</span>
                             <i class="fa-solid fa-arrow-right text-[8px]"></i>
                         </a>
@@ -251,4 +303,28 @@
             if (menu) menu.classList.add('hidden');
         });
     });
+
+    // Realtime Racing Clock & Date Updater
+    function updateRacingClock() {
+        const now = new Date();
+        const hariList = ['MINGGU', 'SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU'];
+        const bulanList = ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'];
+
+        const hari = hariList[now.getDay()];
+        const tgl = String(now.getDate()).padStart(2, '0');
+        const bulan = bulanList[now.getMonth()];
+        const tahun = now.getFullYear();
+
+        const jam = String(now.getHours()).padStart(2, '0');
+        const menit = String(now.getMinutes()).padStart(2, '0');
+        const detik = String(now.getSeconds()).padStart(2, '0');
+
+        document.querySelectorAll('.racing-clock-day').forEach(el => el.innerText = hari);
+        document.querySelectorAll('.racing-clock-date').forEach(el => el.innerText = `${tgl} ${bulan} ${tahun}`);
+        document.querySelectorAll('.racing-clock-hours-min').forEach(el => el.innerText = `${jam}:${menit}`);
+        document.querySelectorAll('.racing-clock-seconds').forEach(el => el.innerText = detik);
+    }
+
+    setInterval(updateRacingClock, 1000);
+    document.addEventListener('DOMContentLoaded', updateRacingClock);
 </script>

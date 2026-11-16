@@ -3,7 +3,9 @@
 <!-- ========================================== -->
 <script>
     // --- Product & Project Detailed Catalog Data Store ---
-    const catalogData = {
+    const serverCatalog = @json($katalogJson ?? []);
+    const serverProjects = @json($projekJson ?? []);
+    const defaultCatalogData = {
         'psu': {
             title: "Smart Digital PSU V1.0.2 Kit",
             category: "Power Supply Unit",
@@ -11,6 +13,11 @@
             id: "IDS-PSU-01",
             price: "Rp 245.000",
             image: "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+            images: [
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+                "{{ asset('projects/smart-psu/app/smart-psu-desktop.png') }}",
+                "{{ asset('img/projects/smart-psu-v1.png') }}"
+            ],
             desc: "Modul catu daya digital pintar (*Smart Digital Power Supply Unit V1.0.2*) dengan output variabel 1.5V–30V, mikrokontroler WiFi ESP-12F, ADC presisi 16-bit ADS1115 & sensor arus INA3221, multi-probe, serta kontrol monitoring telemetri via aplikasi Flutter & Windows Desktop.",
             note: "Desain PCB Sirkuit ESP-12F & Dual ADC — EasyEDA / EAGLE PCB",
             waText: "Halo IDS Store, saya tertarik untuk order produk Smart Digital PSU V1.0.2 Kit",
@@ -32,6 +39,11 @@
             id: "IDS-APP-PSU",
             price: "Include Paket PSU",
             image: "{{ asset('projects/smart-psu/app/smart-psu-desktop.png') }}",
+            images: [
+                "{{ asset('projects/smart-psu/app/smart-psu-desktop.png') }}",
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+                "{{ asset('img/projects/smart-psu-v1.png') }}"
+            ],
             desc: "Aplikasi telemetri dan kendali perangkat catu daya secara realtime via WiFi/Serial USB berbasis Flutter cross-platform untuk Windows Desktop dan smartphone Android.",
             note: "Aplikasi Windows Desktop Realtime Telemetri & Kontrol — Flutter & Dart",
             waText: "Halo IDS Store, saya ingin tanya mengenai aplikasi Flutter Smart Digital PSU",
@@ -51,6 +63,10 @@
             id: "IDS-IOT-32",
             price: "Rp 185.000",
             image: "{{ asset('img/projects/smart-psu-v1.png') }}",
+            images: [
+                "{{ asset('img/projects/smart-psu-v1.png') }}",
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}"
+            ],
             desc: "Board controller otomasi industri berbasis ESP32-WROOM-32D dengan 4 channel relay berisolasi optocoupler, port komunikasi serial RS485 Modbus RTU, OLED display header, dan input 12V-24V DC.",
             note: "Industrial Controller Board — EasyEDA / PCB Prototype",
             waText: "Halo IDS Store, saya tertarik untuk order ESP32 4-Ch Relay & RS485 Board",
@@ -72,6 +88,10 @@
             id: "IDS-TEL-01",
             price: "Rp 210.000",
             image: "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+            images: [
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+                "{{ asset('img/projects/smart-psu-v1.png') }}"
+            ],
             desc: "Node akuisisi data sensor jarak jauh untuk monitoring lingkungan, cuaca, atau pertanian/hidroponik berbasis LoRa 915MHz dan WiFi, dilengkapi manajemen baterai Lithium dan charger Solar Panel.",
             note: "Low Power IoT Telemetry Board — EasyEDA",
             waText: "Halo IDS Store, saya tertarik untuk order Multi-Sensor Telemetry Kit",
@@ -93,6 +113,10 @@
             id: "IDS-SRV-KIT",
             price: "Mulai Rp 150.000",
             image: "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+            images: [
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+                "{{ asset('img/projects/smart-psu-v1.png') }}"
+            ],
             desc: "Layanan perancangan sirkuit elektronik dari konsep skematik, routing layout PCB 2-layer/4-layer standar industri, perakitan solder komponen SMD/THT presisi, uji osiloskop, hingga pembuatan firmware siap pakai.",
             note: "Layanan Desain Skematik & Fabrikasi — EasyEDA / EAGLE",
             waText: "Halo IDS Store, saya ingin konsultasi jasa desain PCB dan pembuatan alat custom",
@@ -114,6 +138,10 @@
             id: "IDS-SW-8266",
             price: "Rp 95.000",
             image: "{{ asset('img/projects/smart-psu-v1.png') }}",
+            images: [
+                "{{ asset('img/projects/smart-psu-v1.png') }}",
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}"
+            ],
             desc: "Modul saklar pintar WiFi 2-channel untuk kontrol lampu dan beban listrik rumah tangga AC 220V dengan proteksi kelebihan beban, web dashboard lokal, dan dukungan MQTT Home Assistant.",
             note: "Smart Relay Module AC 220V — EasyEDA / PCB Prototype",
             waText: "Halo IDS Store, saya tertarik untuk order ESP8266 Smart Switch 2-Ch",
@@ -133,6 +161,10 @@
             id: "IDS-DC-5A",
             price: "Rp 65.000",
             image: "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+            images: [
+                "{{ asset('projects/smart-psu/pcb/smart-psu-pcb.png') }}",
+                "{{ asset('img/projects/smart-psu-v1.png') }}"
+            ],
             desc: "Modul penurun tegangan DC-DC efisiensi tinggi dengan arus maksimal 5A, ripple rendah, dan kestabilan tegangan tinggi untuk mikrokontroler dan power supply sensor.",
             note: "High Precision DC-DC Step-Down Module",
             waText: "Halo IDS Store, saya tertarik untuk order DC Buck Step-Down 5A Module",
@@ -152,6 +184,10 @@
             id: "IDS-APP-PERPUS",
             price: "Custom Lisensi",
             image: "{{ asset('projects/perpustakaan/perpus-dashboard.jpg') }}",
+            images: [
+                "{{ asset('projects/perpustakaan/perpus-dashboard.jpg') }}",
+                "{{ asset('projects/perpustakaan/perpus-katalog.jpg') }}"
+            ],
             desc: "Sistem informasi perpustakaan digital modern berbasis web dengan katalog cepat (OPAC), manajemen peminjaman/pengembalian otomatis, kalkulasi denda, analitik data buku terpopuler, dan multi-role autentikasi.",
             note: "Dashboard & Katalog Digital — Fullstack Laravel & Tailwind CSS",
             waText: "Halo IDS Technology, saya tertarik untuk demo / lisensi sistem PerpusDigi",
@@ -171,6 +207,10 @@
             id: "IDS-APP-PERPUS-OPAC",
             price: "Custom Lisensi",
             image: "{{ asset('projects/perpustakaan/perpus-katalog.jpg') }}",
+            images: [
+                "{{ asset('projects/perpustakaan/perpus-katalog.jpg') }}",
+                "{{ asset('projects/perpustakaan/perpus-dashboard.jpg') }}"
+            ],
             desc: "Halaman katalog buku interaktif dengan pencarian langsung (live search), filter kategori, indikator ketersediaan stok buku, dan pemesanan pinjam online.",
             note: "Koleksi Buku & OPAC — Fullstack Laravel & Tailwind CSS",
             waText: "Halo IDS Technology, saya tertarik untuk info fitur OPAC PerpusDigi",
@@ -185,59 +225,465 @@
         }
     };
 
-    // --- Light Theme Modal Trigger Handler ---
-    function openProductModal(key) {
-        const data = catalogData[key] || catalogData['psu'];
+    // Gabungkan data katalog default dengan data dinamis database
+    const catalogData = Object.assign({}, defaultCatalogData, serverCatalog);
+
+    // --- State Global Modal Media Slider ---
+    let activeModalContext = {
+        type: 'product',      // 'product' | 'project' | 'custom'
+        key: null,
+        projectIndex: null,
+        mediaList: [],        // array of { url, note, type, label }
+        currentIndex: 0
+    };
+
+    // Fungsi perbesar modal gambar projek custom
+    function bukaModalGambarCustom(src, title, desc) {
         const modal = document.getElementById('pcb-modal');
         if (!modal) return;
 
-        // Set Images & Text
-        const imgEl = document.getElementById('pcb-modal-img');
+        activeModalContext.type = 'custom';
+        activeModalContext.mediaList = [{
+            url: src,
+            label: title || 'Preview Desain & Karya',
+            note: desc || 'Dokumentasi Portofolio'
+        }];
+        activeModalContext.currentIndex = 0;
+
+        const tabsContainer = document.getElementById('modal-media-tabs');
+        if (tabsContainer) tabsContainer.classList.add('hidden');
+        const downloadsContainer = document.getElementById('modal-downloads-container');
+        if (downloadsContainer) {
+            downloadsContainer.innerHTML = '';
+            downloadsContainer.classList.add('hidden');
+        }
+
         const titleEl = document.getElementById('pcb-modal-title');
         const descEl = document.getElementById('pcb-modal-desc');
         const fullDescEl = document.getElementById('modal-product-desc-full');
+        const categoryBadge = document.getElementById('modal-badge-category');
+        const statusBadge = document.getElementById('modal-badge-status');
+        const specsContainer = document.getElementById('modal-specs-container');
+
+        if (titleEl) titleEl.innerText = title || 'Preview Desain & Karya';
+        if (descEl) descEl.innerText = desc || 'Dokumentasi Portofolio';
+        if (fullDescEl) fullDescEl.innerText = title || 'Preview Karya';
+        if (categoryBadge) categoryBadge.innerText = 'PORTOFOLIO DETAIL';
+        if (statusBadge) statusBadge.innerText = 'Dokumentasi';
+        if (specsContainer) specsContainer.innerHTML = '';
+
+        renderModalMedia(0);
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fungsi toggle media projek pada kartu (Layout PCB vs Tampilan Aplikasi)
+    function gantiMediaProjek(index, type, imgSrc) {
+        const img = document.getElementById(`prj-img-${index}`);
+        if (img) img.src = imgSrc;
+        const tabDesain = document.getElementById(`tab-prj-${index}-desain`);
+        const tabApp = document.getElementById(`tab-prj-${index}-app`);
+        if (type === 'desain') {
+            if (tabDesain) {
+                tabDesain.className = "px-2 py-1 rounded-md bg-gradient-to-r from-purple-600 to-rose-600 text-white transition-all flex items-center gap-1";
+            }
+            if (tabApp) {
+                tabApp.className = "px-2 py-1 rounded-md text-slate-400 hover:text-slate-200 transition-all flex items-center gap-1";
+            }
+        } else {
+            if (tabApp) {
+                tabApp.className = "px-2 py-1 rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white transition-all flex items-center gap-1";
+            }
+            if (tabDesain) {
+                tabDesain.className = "px-2 py-1 rounded-md text-slate-400 hover:text-slate-200 transition-all flex items-center gap-1";
+            }
+        }
+
+        // Sinkronisasi status aktif ke serverProjects agar saat modal dibuka, menampilkan media yang dipilih
+        if (serverProjects[index]) {
+            serverProjects[index].activeType = type;
+            if (Array.isArray(serverProjects[index].images)) {
+                const foundIdx = serverProjects[index].images.findIndex(m => m.type === type);
+                if (foundIdx !== -1) {
+                    serverProjects[index].currentImageIndex = foundIdx;
+                }
+            }
+        }
+    }
+
+    // Fungsi buka modal portofolio projek lengkap dengan switcher & slider
+    function bukaModalProjek(index) {
+        const prj = serverProjects[index];
+        const modal = document.getElementById('pcb-modal');
+        if (!modal) return;
+
+        if (!prj) {
+            const cardImg = document.getElementById(`prj-img-${index}`);
+            const imgSrc = cardImg ? cardImg.src : "{{ asset('img/logo.png') }}";
+            bukaModalGambarCustom(imgSrc, 'Portofolio Detail', 'Dokumentasi Projek');
+            return;
+        }
+
+        activeModalContext.type = 'project';
+        activeModalContext.projectIndex = index;
+        activeModalContext.mediaList = (prj.images && prj.images.length > 0) ? prj.images : [{
+            type: 'desain',
+            label: 'Dokumentasi',
+            url: "{{ asset('img/logo.png') }}",
+            note: 'Dokumentasi Projek'
+        }];
+
+        // Cari index media yang sedang aktif (Desain atau App)
+        let startIdx = 0;
+        if (prj.activeType) {
+            const found = activeModalContext.mediaList.findIndex(m => m.type === prj.activeType);
+            if (found !== -1) startIdx = found;
+        } else if (typeof prj.currentImageIndex === 'number') {
+            startIdx = prj.currentImageIndex;
+        }
+        activeModalContext.currentIndex = Math.max(0, Math.min(startIdx, activeModalContext.mediaList.length - 1));
+
+        // Data Header Modal
+        const titleEl = document.getElementById('pcb-modal-title');
+        const fullDescEl = document.getElementById('modal-product-desc-full');
         const idEl = document.getElementById('modal-product-id');
-        const priceEl = document.getElementById('modal-product-price');
         const categoryBadge = document.getElementById('modal-badge-category');
         const statusBadge = document.getElementById('modal-badge-status');
         const iconEl = document.getElementById('modal-icon');
+        const subtitleEl = document.getElementById('modal-section-subtitle');
+        const priceWrapper = document.getElementById('modal-price-wrapper');
         const btnWa = document.getElementById('modal-btn-wa');
+        const btnActionText = document.getElementById('modal-btn-action-text');
         const specsContainer = document.getElementById('modal-specs-container');
+        const downloadsContainer = document.getElementById('modal-downloads-container');
 
-        if (imgEl) imgEl.src = data.image;
-        if (titleEl) titleEl.innerText = data.title;
-        if (descEl) descEl.innerText = data.note || data.title;
-        if (fullDescEl) fullDescEl.innerText = data.desc;
-        if (idEl) idEl.innerText = data.id || 'IDS-HW-01';
-        if (priceEl) priceEl.innerText = data.price || 'Rp 0';
-        if (categoryBadge) categoryBadge.innerText = data.category || 'HARDWARE DETAIL';
-        if (statusBadge) statusBadge.innerText = data.status || 'Ready Stock';
+        if (titleEl) titleEl.innerText = prj.title;
+        if (fullDescEl) fullDescEl.innerText = prj.desc;
+        if (idEl) idEl.innerText = prj.category || 'PORTOFOLIO';
+        if (categoryBadge) categoryBadge.innerText = prj.category || 'PORTOFOLIO DETAIL';
+        if (statusBadge) statusBadge.innerText = prj.sub_category || 'Featured Project';
+        if (subtitleEl) subtitleEl.innerText = 'Sorotan & Fitur Teknis';
+        if (iconEl) iconEl.className = 'fa-solid fa-laptop-code';
 
-        if (iconEl) {
-            iconEl.className = data.icon || 'fa-solid fa-microchip';
+        if (priceWrapper) {
+            priceWrapper.innerHTML = `
+                <span class="text-[8.5px] sm:text-[9px] text-slate-400 font-bold uppercase block leading-none">Status Karya</span>
+                <span class="font-racing font-extrabold text-sm sm:text-base text-slate-900">
+                    Terverifikasi & Selesai
+                </span>
+            `;
         }
 
+        const nomorWa = "{{ $pengaturan->nomor_whatsapp ?? '6281234567890' }}";
         if (btnWa) {
-            btnWa.href = `https://wa.me/6281234567890?text=${encodeURIComponent(data.waText || 'Halo IDS Store, saya tertarik dengan produk ' + data.title)}`;
+            btnWa.href = `https://wa.me/${nomorWa}?text=${encodeURIComponent('Halo Mas Nurhadi, saya tertarik mendiskusikan projek: ' + prj.title)}`;
+        }
+        if (btnActionText) {
+            btnActionText.innerText = 'KONSULTASI PROJEK';
+        }
+
+        // Render Sorotan Teknis
+        if (specsContainer) {
+            if (prj.specs && Array.isArray(prj.specs) && prj.specs.length > 0) {
+                specsContainer.innerHTML = prj.specs.map(spec => `
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-start gap-2">
+                        <div class="w-6 h-6 rounded-md bg-white border border-slate-200/80 ${spec.warna || 'text-rose-500'} flex items-center justify-center text-[10px] flex-shrink-0 shadow-2xs mt-0.5">
+                            <i class="${spec.ikon || 'fa-solid fa-check'}"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-[9px] sm:text-[9.5px] font-bold text-slate-700 block uppercase leading-none truncate">${spec.judul || spec.label || 'Fitur'}</span>
+                            <p class="text-[9.5px] sm:text-[10px] text-slate-500 font-medium leading-tight mt-0.5">${spec.keterangan || spec.val || ''}</p>
+                        </div>
+                    </div>
+                `).join('');
+                specsContainer.classList.remove('hidden');
+            } else {
+                specsContainer.innerHTML = '';
+            }
+        }
+
+        // Render Tautan Unduh & Aksi Projek
+        if (downloadsContainer) {
+            let downloadButtons = [];
+            if (prj.apk) {
+                downloadButtons.push(`
+                    <a href="${prj.apk}" download class="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-racing font-bold text-[9px] tracking-wider transition-all flex items-center gap-1 shadow-2xs">
+                        <i class="fa-brands fa-android text-[10px]"></i>
+                        <span>UNDUH APK</span>
+                    </a>
+                `);
+            }
+            if (prj.desktop) {
+                downloadButtons.push(`
+                    <a href="${prj.desktop}" download class="px-2.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-700 text-white font-racing font-bold text-[9px] tracking-wider transition-all flex items-center gap-1 shadow-2xs">
+                        <i class="fa-brands fa-windows text-[10px]"></i>
+                        <span>UNDUH DESKTOP</span>
+                    </a>
+                `);
+            }
+            if (prj.demo) {
+                downloadButtons.push(`
+                    <a href="${prj.demo}" target="_blank" class="px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-racing font-bold text-[9px] tracking-wider transition-all flex items-center gap-1 shadow-2xs">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        <span>LIVE DEMO</span>
+                    </a>
+                `);
+            }
+            if (prj.repo) {
+                downloadButtons.push(`
+                    <a href="${prj.repo}" target="_blank" class="px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-racing font-bold text-[9px] tracking-wider transition-all flex items-center gap-1 shadow-2xs">
+                        <i class="fa-brands fa-github text-[10px]"></i>
+                        <span>GITHUB</span>
+                    </a>
+                `);
+            }
+
+            if (downloadButtons.length > 0) {
+                downloadsContainer.innerHTML = downloadButtons.join('');
+                downloadsContainer.classList.remove('hidden');
+            } else {
+                downloadsContainer.innerHTML = '';
+                downloadsContainer.classList.add('hidden');
+            }
+        }
+
+        // Render Tabs Switcher pada modal jika projek punya lebih dari 1 jenis media
+        const tabsContainer = document.getElementById('modal-media-tabs');
+        if (tabsContainer) {
+            if (activeModalContext.mediaList.length > 1) {
+                tabsContainer.classList.remove('hidden');
+                renderProjectModalTabs();
+            } else {
+                tabsContainer.classList.add('hidden');
+            }
+        }
+
+        renderModalMedia(activeModalContext.currentIndex);
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Render Tab Switcher Media di dalam Modal
+    function renderProjectModalTabs() {
+        const tabsContainer = document.getElementById('modal-media-tabs');
+        if (!tabsContainer || activeModalContext.type !== 'project') return;
+
+        tabsContainer.innerHTML = activeModalContext.mediaList.map((media, idx) => {
+            const isActive = idx === activeModalContext.currentIndex;
+            const iconClass = media.type === 'app' ? 'fa-solid fa-desktop' : 'fa-solid fa-microchip';
+            const activeBg = media.type === 'app' 
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs' 
+                : 'bg-gradient-to-r from-purple-600 to-rose-600 text-white shadow-xs';
+            const inactiveBg = 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70';
+
+            return `
+                <button type="button" onclick="keFotoModal(${idx})" class="flex-1 py-1 px-2 rounded-lg text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer font-bold ${isActive ? activeBg : inactiveBg}">
+                    <i class="${iconClass} text-[10px]"></i>
+                    <span class="truncate">${media.label || (media.type === 'app' ? 'Tampilan App' : 'Desain Layout')}</span>
+                </button>
+            `;
+        }).join('');
+    }
+
+    // --- Light Theme Modal Trigger Handler untuk Produk Toko ---
+    function openProductModal(key) {
+        const data = catalogData[key] || catalogData['psu'] || Object.values(catalogData)[0];
+        const modal = document.getElementById('pcb-modal');
+        if (!modal) return;
+
+        activeModalContext.type = 'product';
+        activeModalContext.key = key;
+        activeModalContext.projectIndex = null;
+
+        // Siapkan list media gambar produk (bisa beberapa foto yang dapat digeser)
+        let mediaList = [];
+        if (data.images && Array.isArray(data.images) && data.images.length > 0) {
+            mediaList = data.images.map((img, i) => ({
+                url: img,
+                label: `${data.title} (Foto ${i + 1})`,
+                note: data.note || data.title
+            }));
+        } else if (data.image) {
+            mediaList = [{
+                url: data.image,
+                label: data.title,
+                note: data.note || data.title
+            }];
+        }
+
+        activeModalContext.mediaList = mediaList;
+        activeModalContext.currentIndex = 0;
+
+        // Sembunyikan tabs projek
+        const tabsContainer = document.getElementById('modal-media-tabs');
+        if (tabsContainer) tabsContainer.classList.add('hidden');
+
+        // Sembunyikan tautan unduh projek
+        const downloadsContainer = document.getElementById('modal-downloads-container');
+        if (downloadsContainer) {
+            downloadsContainer.innerHTML = '';
+            downloadsContainer.classList.add('hidden');
+        }
+
+        // Set Images & Text
+        const titleEl = document.getElementById('pcb-modal-title');
+        const fullDescEl = document.getElementById('modal-product-desc-full');
+        const idEl = document.getElementById('modal-product-id');
+        const categoryBadge = document.getElementById('modal-badge-category');
+        const statusBadge = document.getElementById('modal-badge-status');
+        const iconEl = document.getElementById('modal-icon');
+        const subtitleEl = document.getElementById('modal-section-subtitle');
+        const priceWrapper = document.getElementById('modal-price-wrapper');
+        const btnWa = document.getElementById('modal-btn-wa');
+        const btnActionText = document.getElementById('modal-btn-action-text');
+        const specsContainer = document.getElementById('modal-specs-container');
+
+        if (titleEl) titleEl.innerText = data.title;
+        if (fullDescEl) fullDescEl.innerText = data.desc;
+        if (idEl) idEl.innerText = data.id || 'IDS-HW-01';
+        if (categoryBadge) categoryBadge.innerText = data.category || 'HARDWARE DETAIL';
+        if (statusBadge) statusBadge.innerText = data.status || 'Ready Stock';
+        if (subtitleEl) subtitleEl.innerText = 'Spesifikasi & Fitur Teknis';
+        if (iconEl) iconEl.className = data.icon || 'fa-solid fa-microchip';
+
+        if (priceWrapper) {
+            priceWrapper.innerHTML = `
+                <span class="text-[8.5px] sm:text-[9px] text-slate-400 font-bold uppercase block leading-none">Harga Resmi</span>
+                <span id="modal-product-price" class="font-racing font-extrabold text-base sm:text-lg text-slate-900">
+                    ${data.price || 'Rp 0'}
+                </span>
+            `;
+        }
+
+        const nomorWa = "{{ $pengaturan->nomor_whatsapp ?? '6281234567890' }}";
+        if (btnWa) {
+            btnWa.href = `https://wa.me/${nomorWa}?text=${encodeURIComponent(data.waText || 'Halo IDS Store, saya tertarik dengan produk ' + data.title)}`;
+        }
+        if (btnActionText) {
+            btnActionText.innerText = 'ORDER VIA WHATSAPP';
         }
 
         // Render Technical Specs Grid
         if (specsContainer && data.specs && Array.isArray(data.specs)) {
             specsContainer.innerHTML = data.specs.map(spec => `
                 <div class="p-2 sm:p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-start gap-2">
-                    <div class="w-6 h-6 rounded-md bg-white border border-slate-200/80 ${spec.color || 'text-rose-500'} flex items-center justify-center text-[10px] flex-shrink-0 shadow-2xs mt-0.5">
-                        <i class="${spec.icon || 'fa-solid fa-check'}"></i>
+                    <div class="w-6 h-6 rounded-md bg-white border border-slate-200/80 ${spec.color || spec.warna || 'text-rose-500'} flex items-center justify-center text-[10px] flex-shrink-0 shadow-2xs mt-0.5">
+                        <i class="${spec.icon || spec.ikon || 'fa-solid fa-check'}"></i>
                     </div>
                     <div class="min-w-0">
-                        <span class="text-[9px] sm:text-[9.5px] font-bold text-slate-700 block uppercase leading-none truncate">${spec.label}</span>
-                        <p class="text-[9.5px] sm:text-[10px] text-slate-500 font-medium leading-tight mt-0.5">${spec.val}</p>
+                        <span class="text-[9px] sm:text-[9.5px] font-bold text-slate-700 block uppercase leading-none truncate">${spec.label || spec.judul || 'Spek'}</span>
+                        <p class="text-[9.5px] sm:text-[10px] text-slate-500 font-medium leading-tight mt-0.5">${spec.val || spec.keterangan || spec.nilai || ''}</p>
                     </div>
                 </div>
             `).join('');
+            specsContainer.classList.remove('hidden');
         }
+
+        renderModalMedia(0);
 
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+    }
+
+    // --- Render Aktif Media di Modal (Dukungan Transisi, Counter, & Dots) ---
+    function renderModalMedia(idx) {
+        const mediaList = activeModalContext.mediaList;
+        if (!mediaList || mediaList.length === 0) return;
+
+        const safeIdx = Math.max(0, Math.min(idx, mediaList.length - 1));
+        activeModalContext.currentIndex = safeIdx;
+        const media = mediaList[safeIdx];
+
+        const imgEl = document.getElementById('pcb-modal-img');
+        const descEl = document.getElementById('pcb-modal-desc');
+        const prevBtn = document.getElementById('modal-img-prev-btn');
+        const nextBtn = document.getElementById('modal-img-next-btn');
+        const counterBadge = document.getElementById('modal-img-counter');
+        const currentIdxEl = document.getElementById('modal-img-current-idx');
+        const totalCountEl = document.getElementById('modal-img-total-count');
+        const dotsContainer = document.getElementById('modal-img-dots-container');
+
+        if (imgEl) {
+            imgEl.style.opacity = '0.35';
+            setTimeout(() => {
+                imgEl.src = media.url;
+                imgEl.alt = media.label || 'Preview Media';
+                imgEl.style.opacity = '1';
+            }, 70);
+        }
+
+        if (descEl) {
+            descEl.innerText = media.note || media.label || 'Dokumentasi & Spesifikasi';
+        }
+
+        // Tampilkan panah navigasi, counter, & dots jika lebih dari 1 gambar
+        if (mediaList.length > 1) {
+            if (prevBtn) prevBtn.classList.remove('hidden');
+            if (nextBtn) nextBtn.classList.remove('hidden');
+            if (counterBadge) {
+                counterBadge.classList.remove('hidden');
+                if (currentIdxEl) currentIdxEl.innerText = safeIdx + 1;
+                if (totalCountEl) totalCountEl.innerText = mediaList.length;
+            }
+
+            if (dotsContainer) {
+                dotsContainer.classList.remove('hidden');
+                dotsContainer.innerHTML = mediaList.map((_, i) => `
+                    <button type="button" onclick="keFotoModal(${i})" class="h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === safeIdx ? 'w-6 bg-rose-500 shadow-xs' : 'w-2 bg-slate-600 hover:bg-slate-400'}" aria-label="Lihat Foto ${i + 1}"></button>
+                `).join('');
+            }
+        } else {
+            if (prevBtn) prevBtn.classList.add('hidden');
+            if (nextBtn) nextBtn.classList.add('hidden');
+            if (counterBadge) counterBadge.classList.add('hidden');
+            if (dotsContainer) dotsContainer.classList.add('hidden');
+        }
+
+        // Sinkronisasi jika di mode projek
+        if (activeModalContext.type === 'project') {
+            renderProjectModalTabs();
+
+            const prjIdx = activeModalContext.projectIndex;
+            if (typeof prjIdx === 'number' && serverProjects[prjIdx]) {
+                serverProjects[prjIdx].currentImageIndex = safeIdx;
+                if (media.type) {
+                    serverProjects[prjIdx].activeType = media.type;
+                    const cardImg = document.getElementById(`prj-img-${prjIdx}`);
+                    if (cardImg) cardImg.src = media.url;
+                    const tabDesain = document.getElementById(`tab-prj-${prjIdx}-desain`);
+                    const tabApp = document.getElementById(`tab-prj-${prjIdx}-app`);
+                    if (media.type === 'desain') {
+                        if (tabDesain) tabDesain.className = "px-2 py-1 rounded-md bg-gradient-to-r from-purple-600 to-rose-600 text-white transition-all flex items-center gap-1";
+                        if (tabApp) tabApp.className = "px-2 py-1 rounded-md text-slate-400 hover:text-slate-200 transition-all flex items-center gap-1";
+                    } else if (media.type === 'app') {
+                        if (tabApp) tabApp.className = "px-2 py-1 rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white transition-all flex items-center gap-1";
+                        if (tabDesain) tabDesain.className = "px-2 py-1 rounded-md text-slate-400 hover:text-slate-200 transition-all flex items-center gap-1";
+                    }
+                }
+            }
+        }
+    }
+
+    // Fungsi geser foto maju / mundur (Next / Prev)
+    function geserFotoModal(direction) {
+        const list = activeModalContext.mediaList;
+        if (!list || list.length <= 1) return;
+
+        let newIdx = activeModalContext.currentIndex;
+        if (direction === 'next') {
+            newIdx = (newIdx + 1) % list.length;
+        } else if (direction === 'prev') {
+            newIdx = (newIdx - 1 + list.length) % list.length;
+        }
+
+        renderModalMedia(newIdx);
+    }
+
+    // Fungsi loncat langsung ke foto index tertentu
+    function keFotoModal(index) {
+        renderModalMedia(index);
     }
 
     // Backward-compatible openPcbModal
@@ -247,7 +693,6 @@
             return;
         }
 
-        // Cari item berdasarkan gambar atau fallback
         let matchedKey = null;
         for (const [key, val] of Object.entries(catalogData)) {
             if (val.image === src || val.title === title) {
@@ -259,11 +704,7 @@
         if (matchedKey) {
             openProductModal(matchedKey);
         } else {
-            // Default fallback
-            openProductModal('psu');
-            if (src) document.getElementById('pcb-modal-img').src = src;
-            if (title) document.getElementById('pcb-modal-title').innerText = title;
-            if (desc) document.getElementById('pcb-modal-desc').innerText = desc;
+            bukaModalGambarCustom(src, title, desc);
         }
     }
 
@@ -275,10 +716,51 @@
         }
     }
 
-    // Close modal with ESC key
+    // Event Listener Keyboard & Touch Gestures untuk Modal Slider
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closePcbModal();
+        const modal = document.getElementById('pcb-modal');
+        if (!modal || modal.classList.contains('hidden')) return;
+
+        if (e.key === 'Escape') {
+            closePcbModal();
+        } else if (e.key === 'ArrowLeft') {
+            geserFotoModal('prev');
+        } else if (e.key === 'ArrowRight') {
+            geserFotoModal('next');
+        }
     });
+
+    // Touch Swipe Gesture Handler pada Modal Box
+    (function initModalSwipe() {
+        const sliderBox = document.getElementById('modal-slider-box');
+        if (!sliderBox) return;
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        sliderBox.addEventListener('touchstart', function(e) {
+            if (e.changedTouches && e.changedTouches[0]) {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }
+        }, { passive: true });
+
+        sliderBox.addEventListener('touchend', function(e) {
+            if (!e.changedTouches || !e.changedTouches[0]) return;
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+                if (diffX < 0) {
+                    geserFotoModal('next');
+                } else {
+                    geserFotoModal('prev');
+                }
+            }
+        }, { passive: true });
+    })();
 
     // --- PSU Dual-Media Switcher Controller ---
     let currentPsuView = 'pcb';
@@ -587,5 +1069,31 @@
     }
     function goToProjectSlide(index) {
         if (projectsController) projectsController.goTo(index);
+    }
+
+    // --- Tombol Tersembunyi & Shortcut Masuk Admin ---
+    // 1. Shortcut Keyboard: Ctrl + Alt + A (atau Cmd + Option + A)
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key === 'a' || e.key === 'A')) {
+            e.preventDefault();
+            window.location.href = "{{ route('login') }}";
+        }
+    });
+
+    // 2. Klik Rahasia: Klik 3x cepat pada badge OFFICIAL STORE di hero
+    const secretTrigger = document.getElementById('secret-admin-trigger');
+    if (secretTrigger) {
+        let clickCount = 0;
+        let clickTimer = null;
+        secretTrigger.addEventListener('click', function() {
+            clickCount++;
+            if (clickCount >= 3) {
+                window.location.href = "{{ route('login') }}";
+            }
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 1000);
+        });
     }
 </script>
